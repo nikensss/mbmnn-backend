@@ -1,0 +1,42 @@
+{
+  "name": "milabaumann",
+  "version": "0.0.1",
+  "description": "Personal website",
+  "main": "/src/index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "start:dev": "nodemon",
+    "typescript": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikensss/milabaumann.git"
+  },
+  "author": "Ricard Mallafre Lopez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikensss/milabaumann/issues"
+  },
+  "homepage": "https://github.com/nikensss/milabaumann#readme",
+  "dependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.2",
+    "@types/mongoose": "^5.7.3",
+    "@types/multer": "^1.4.2",
+    "@types/node": "^13.7.7",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.2",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
