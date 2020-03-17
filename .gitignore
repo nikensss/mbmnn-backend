@@ -2,4 +2,3 @@ node_modules
 .env
 dest
 uploads
-.DS_Store

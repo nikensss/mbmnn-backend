@@ -28,8 +28,9 @@ router.post('/login', (req, res, next) => {
       .checkPassword(password)
       .then(same => {
         if (!same) return res.status(401).send({ err: 'invalid credentials' });
+        console.log(`User ${username} logged in successfully!`);
         const payload = { id: user._id };
-        return res.send({ token: token.sign(payload) });
+        return res.send({ username: username, token: token.sign(payload) });
       })
       .catch(err => res.status(400).send({ err }));
   });
