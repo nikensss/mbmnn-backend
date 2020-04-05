@@ -32,7 +32,7 @@ router.get('/:id', (req, res, next) => {
 router.post(
   '/new',
   upload.fields([
-    { name: 'main-image', maxCount: 1 },
+    { name: 'mainImage', maxCount: 1 },
     { name: 'images', maxCount: 12 }
   ]),
   (req, res) => {

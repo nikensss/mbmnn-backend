@@ -19,7 +19,8 @@ class ProjectService {
   }
 
   add(req) {
-    if (!req.files['images'] || !req.files['main-image']) {
+    console.log(req);
+    if (!req.files['images'] || !req.files['mainImage']) {
       return Promise.reject(new Error('missing data'));
     }
 
@@ -30,11 +31,13 @@ class ProjectService {
       images: []
     });
 
+    return Promise.resolve("POSTED!");
+
     return fs.promises
-      .readFile(req.files['main-image'][0].path)
+      .readFile(req.files['mainImage'][0].path)
       .then(data => {
         project.mainImage = {
-          contentType: req.files['main-image'][0].mimetype,
+          contentType: req.files['mainImage'][0].mimetype,
           data: Buffer.from(data)
         };
 
