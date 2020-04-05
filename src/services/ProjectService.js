@@ -20,6 +20,7 @@ class ProjectService {
 
   add(req) {
     console.log(req);
+    // return Promise.resolve("POSTED!");
     if (!req.files['images'] || !req.files['mainImage']) {
       return Promise.reject(new Error('missing data'));
     }
@@ -30,8 +31,6 @@ class ProjectService {
       texts: req.body.texts,
       images: []
     });
-
-    return Promise.resolve("POSTED!");
 
     return fs.promises
       .readFile(req.files['mainImage'][0].path)
