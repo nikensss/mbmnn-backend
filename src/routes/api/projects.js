@@ -38,8 +38,8 @@ router.post(
   (req, res) => {
     projectService
       .add(req)
-      .then(project => res.send(project))
-      .catch(err => res.status(400).send({ err: err.message }));
+      .then((project) => res.send({ ok: true, project }))
+      .catch((err) => res.status(400).send({ err: err.message }));
   }
 );
 

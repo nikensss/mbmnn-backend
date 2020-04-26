@@ -20,7 +20,8 @@ class ProjectService {
 
   add(req) {
     console.log(req);
-    // return Promise.resolve("POSTED!");
+    console.log(req.body);
+    return Promise.resolve('POSTED!');
     if (!req.files['images'] || !req.files['mainImage']) {
       return Promise.reject(new Error('missing data'));
     }
@@ -32,18 +33,20 @@ class ProjectService {
       images: []
     });
 
+    return Promise.resolve('accepted');
+
     return fs.promises
       .readFile(req.files['mainImage'][0].path)
-      .then(data => {
+      .then((data) => {
         project.mainImage = {
           contentType: req.files['mainImage'][0].mimetype,
           data: Buffer.from(data)
         };
 
-        return Promise.all(req.files['images'].map(c => fs.promises.readFile(c.path)));
+        return Promise.all(req.files['images'].map((c) => fs.promises.readFile(c.path)));
       })
-      .then(data => {
-        project.images = data.map(d => ({
+      .then((data) => {
+        project.images = data.map((d) => ({
           contentType: req.files['images'][0].mimetype,
           data: Buffer.from(d)
         }));
@@ -51,8 +54,8 @@ class ProjectService {
         return project.validate();
       })
       .then(() => project.save())
-      .then(project => project)
-      .catch(err => {
+      .then((project) => project)
+      .catch((err) => {
         console.log(err);
         return err;
       });
