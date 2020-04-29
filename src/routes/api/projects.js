@@ -36,6 +36,7 @@ router.post(
     { name: 'images', maxCount: 12 }
   ]),
   (req, res) => {
+    console.log('[Project] adding new project...');
     projectService
       .add(req)
       .then((project) => res.send({ ok: true, project }))

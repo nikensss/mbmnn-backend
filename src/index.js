@@ -1,20 +1,21 @@
 import './loadEnv';
 import express from 'express';
-import parser from 'body-parser';
+import bodyParser from 'body-parser';
 import apiRoutes from './routes/api/index';
 
 const app = express();
 
 app.use(
-  parser.urlencoded({
+  bodyParser.urlencoded({
+    limit: '50mb',
     extended: true
   })
 );
 
 //use this middleware to allow all applications to query this api
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:4200"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -24,6 +25,4 @@ app.get('/', (req, res) =>
 
 app.use('/api', apiRoutes);
 
-app.listen(process.env.PORT || 3000, () =>
-  console.log('MBMNN API up and running on port ' + process.env.PORT)
-);
+app.listen(process.env.PORT || 3000, () => console.log('MBMNN API up and running on port ' + process.env.PORT));
