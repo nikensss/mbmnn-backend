@@ -11,7 +11,6 @@ app.use(
     extended: true
   })
 );
-
 //use this middleware to allow all applications to query this api
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200'); // update to match the domain you will make the request from
@@ -25,4 +24,4 @@ app.get('/', (req, res) =>
 
 app.use('/api', apiRoutes);
 
-app.listen(process.env.PORT || 3000, () => console.log('MBMNN API up and running on port ' + process.env.PORT));
+app.listen(process.env.PORT || 3000, () => console.log(`MBMNN API up and running on port ${process.env.PORT}`));
