@@ -1,7 +1,7 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
-const canHash = salt => ({
-  hash: s => bcrypt.hash(s, salt)
+const canHash = (salt) => ({
+  hash: (s) => bcrypt.hash(s, salt)
 });
 
 const canCompare = () => ({

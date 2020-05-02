@@ -39,7 +39,7 @@ router.post(
     console.log('[Project] adding new project...');
     projectService
       .add(req)
-      .then((project) => res.send({ ok: true, project }))
+      .then((project) => res.send({ ok: true, id: project._id }))
       .catch((err) => res.status(400).send({ err: err.message }));
   }
 );
@@ -49,7 +49,7 @@ router.get('/delete/:id', (req, res) => {
   projectService.delete(id, (err, project) => {
     if (err) return res.status(400).send({ err });
     if (!project) return res.status(400).send({ status: 'no such project' });
-    return res.send({ status: 'deleted', project: project });
+    return res.send({ status: 'deleted', id: project._id });
   });
 });
 

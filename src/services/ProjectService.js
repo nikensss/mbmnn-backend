@@ -10,6 +10,10 @@ class ProjectService {
       if (err) return next(err);
       return next(null, projects);
     });
+    // Project.find({}, { mainImage: 0, images: 0 }, (err, projects) => {
+    //   if (err) return next(err);
+    //   return next(null, projects);
+    // });
   }
 
   getProject(id, next) {
@@ -62,7 +66,10 @@ class ProjectService {
         console.log('saving project');
         return project.save();
       })
-      .then(() => console.log('project saved'))
+      .then((project) => {
+        console.log('project saved');
+        return project;
+      })
       .catch((err) => {
         console.log(err);
         throw err;
