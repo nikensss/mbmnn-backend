@@ -5,7 +5,7 @@ import token from '../../auth/token';
 
 const router = new Router();
 
-router.post('/register', (req, res, next) => {
+router.post('/register', auth, (req, res, next) => {
   const { username, password } = req.body;
   const user = new User({ username, password });
   user
