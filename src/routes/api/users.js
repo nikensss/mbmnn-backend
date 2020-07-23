@@ -5,7 +5,7 @@ import token from '../../auth/token';
 
 const router = new Router();
 
-router.post('/register', auth, (req, res, next) => {
+router.post('/register', (req, res, next) => {
   const { username, password } = req.body;
   const user = new User({ username, password });
   user
@@ -20,7 +20,8 @@ router.post('/register', auth, (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
   const { username, password } = req.body;
-  if (!username || !password) return res.status(400).send({ err: 'Missing data' });
+  if (!username || !password)
+    return res.status(400).send({ err: 'Missing data' });
   User.findOne({ username: username }, (err, user) => {
     if (err) return res.status(400).send(err);
     if (!user) return res.status(400).send({ err: 'User not found' });
