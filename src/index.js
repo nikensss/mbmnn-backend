@@ -3,8 +3,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes/api/index';
 
-const CORS_IP =
-  process.env.ENV !== 'MPB' ? 'http://34.91.164.51' : 'http://localhost:4200';
+const CORS_IP = process.env.CORS_IP || 'http://localhost:4200';
+
 const app = express();
 
 app.use(
