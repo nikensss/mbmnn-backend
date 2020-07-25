@@ -2,6 +2,7 @@ import './loadEnv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes/api/index';
+import cors from 'cors';
 
 const CORS_IP = process.env.CORS_IP || 'http://localhost:4200';
 
@@ -14,14 +15,7 @@ app.use(
   })
 );
 //use this middleware to allow all applications to query this api
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', CORS_IP); // update to match the domain you will make the request from
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+app.use(cors());
 
 app.get('/', (req, res) =>
   res.send(
