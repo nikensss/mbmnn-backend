@@ -25,7 +25,7 @@ app.get('/', (req, res) =>
 
 app.use('/api', apiRoutes);
 
-app.listen(process.env.PORT || 3000, () =>
+app.listen(process.env.PORT || 3210, () =>
   console.log(
     `MBMNN API up and running on port ${process.env.PORT} (env: ${process.env.ENV})`
   )

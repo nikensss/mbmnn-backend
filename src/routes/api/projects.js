@@ -11,7 +11,7 @@ var upload = multer({
 });
 
 router.get('/', (req, res) => {
-  res.redirect('all');
+  res.redirect('projects/all');
 });
 
 router.get('/all', (req, res) => {
@@ -39,8 +39,8 @@ router.post(
     console.log('[Project] adding new project...');
     projectService
       .add(req)
-      .then((project) => res.send({ ok: true, id: project._id }))
-      .catch((err) => res.status(400).send({ err: err.message }));
+      .then(project => res.send({ ok: true, id: project._id }))
+      .catch(err => res.status(400).send({ err: err.message }));
   }
 );
 
