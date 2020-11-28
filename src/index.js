@@ -4,8 +4,6 @@ import bodyParser from 'body-parser';
 import apiRoutes from './routes/api/index';
 import cors from 'cors';
 
-const CORS_IP = process.env.CORS_IP || 'http://localhost:4200';
-
 const app = express();
 
 app.use(
@@ -25,7 +23,7 @@ app.get('/', (req, res) =>
 
 app.use('/api', apiRoutes);
 
-app.listen(process.env.PORT || 3210, () =>
+app.listen(process.env.PORT || 3333, () =>
   console.log(
     `MBMNN API up and running on port ${process.env.PORT} (env: ${process.env.ENV})`
   )

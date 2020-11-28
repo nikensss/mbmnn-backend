@@ -1,14 +1,17 @@
 import mongoose from 'mongoose';
 
 mongoose
-  .connect('mongodb://localhost/mbmnn', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(data => {
+  .connect(
+    `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.0qo8b.mongodb.net/mbmnn?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  )
+  .then((data) => {
     console.log('Connection to DB successful!');
   })
-  .catch(err => {
+  .catch((err) => {
     console.log('Error during connection setup!' + err);
   });
 
