@@ -1,4 +1,4 @@
-import './loadEnv';
+// import './loadEnv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import apiRoutes from './routes/api/index';
